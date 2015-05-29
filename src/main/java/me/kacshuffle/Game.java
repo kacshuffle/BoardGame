@@ -18,7 +18,7 @@ public class Game {
 	
 	
 	/**
-	 * Actual position position in the table
+	 * Actual position position in the table.
 	 */
 	private Coordinate actualPosition;
 	
@@ -42,7 +42,7 @@ public class Game {
 	private List<Coordinate> stepStorageForGamer = new ArrayList<Coordinate>();
 	
 	/**
-	 * Model of the table
+	 * Model of the table.
 	 */
 	private Object o[][] = new Object[][] {
 			{null, null, null, null, "jatekos", null, null},
@@ -87,14 +87,8 @@ public class Game {
 		this.clickedPosition = new Coordinate(x,y, o[x][y]);
 	}
 
-	public void resetGame() {
-		addstepStorage(0,4); // ez nem 1-1
-		actualPosition = new Coordinate(0,4);
-		actualPosition.value = o[0][4];
-		this.stepStorageForGamer.add(new Coordinate(6,2));
-	}
 	/**
-	 * Add a new step
+	 * Add a new step.
 	 * @param x Row coordinate
 	 * @param y Column coordinate
 	 */
@@ -110,34 +104,34 @@ public class Game {
 	}
 
 	/**
-	 * Return back with the basic matrix
+	 * Return back with the basic matrix.
 	 * @return o Return back with the basic matrix for the table.
 	 */
 	public Object[][] getMap(){ return o; }
 
 	/**
-	 * Set the actual value
+	 * Set the actual value.
 	 * @param o Set the actual position value.
 	 */
 	public void setActValue(Object o){
 		actualPosition.value = o;
 	}
 	/**
-	 * Get the X coordinate from the last step
+	 * Get the X coordinate from the last step.
 	 * @return Coordinate which give back the X coordinate
 	 */
 	public int getLastStepX(){
 		return stepStorage.get(stepStorage.size() - 1 ).x;
 	}
 	/**
-	 * Get the Y coordinate from the last step
+	 * Get the Y coordinate from the last step.
 	 * @return Coordinate which give back the Y coordinate
 	 */
 	public int getLastStepY(){
 		return stepStorage.get(stepStorage.size() - 1 ).y;
 	}
 	/**
-	 * Return with the count of steps
+	 * Return with the count of steps.
 	 * @return string
 	 */
 	public String stepcount(){
