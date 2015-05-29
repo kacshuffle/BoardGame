@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.border.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *  The logic of the game.
@@ -16,7 +18,7 @@ import javax.swing.border.*;
 
 public class Game {
 	
-	
+	private static Logger log = LoggerFactory.getLogger(Game.class);
 	/**
 	 * Actual position position in the table.
 	 */
@@ -84,6 +86,7 @@ public class Game {
 	 * @param y Column coordinate
 	 */
 	public void setclickedPosition(int x, int y){
+		log.trace("ClickedPos");
 		this.clickedPosition = new Coordinate(x,y, o[x][y]);
 	}
 
