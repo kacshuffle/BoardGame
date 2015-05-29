@@ -41,7 +41,6 @@ public class Game {
 	 */
 	private List<Coordinate> stepStorageForGamer = new ArrayList<Coordinate>();
 	
-
 	/**
 	 * Model of the table
 	 */
@@ -88,6 +87,12 @@ public class Game {
 		this.clickedPosition = new Coordinate(x,y, o[x][y]);
 	}
 
+	public void resetGame() {
+		addstepStorage(0,4); // ez nem 1-1
+		actualPosition = new Coordinate(0,4);
+		actualPosition.value = o[0][4];
+		this.stepStorageForGamer.add(new Coordinate(6,2));
+	}
 	/**
 	 * Add a new step
 	 * @param x Row coordinate
@@ -138,6 +143,7 @@ public class Game {
 	public String stepcount(){
 		return new Integer(stepStorage.size() -1).toString();
 	}
+	
 	/**
 	 * Handling the steps with the actual and the clicked position.
 	 */
@@ -167,6 +173,11 @@ public class Game {
 		System.out.println("lGamer: " + lGamer + " aGamer: " + aGamer);
 		if(clickedPositionValue == null && gamer.equals(actValue)){ 
 			setTableValue(gamer,null, actualPosition, clickedPosition);
+		} else if(("jatekos".equals(actValue) || "gamer".equals(actValue)) && clickedPositionValue == "jatekos" || clickedPositionValue == "gamer"){ 
+
+			System.out.printf("Ön Nyert");
+			addstepStorage(0, 0);
+			
 			/* ----------------------------------- l doboz ------------------------------------ */
 		} else if("l".equals(clickedPositionValue)) { // ha l-be lépsz, azonos x-en, actY - clikY == 1 && azonos y, x-ek kül. -1
 			if(actualPosition.x == clickedPosition.x && (actualPosition.y - clickedPosition.y) == 1){ // jobbról balra lépek be
@@ -188,6 +199,9 @@ public class Game {
 		} else if (("a-gamer".equals(actValue) || "a-jatekos".equals(actValue)) && clickedPositionValue == null){ // ha ki akarok lépni üres területbe
 			if(!(actualPosition.x == clickedPosition.x && (actualPosition.y - clickedPosition.y) == -1)){ // balról jobbra lépki ennek a negáltja
 				setTableValue(gamer, aGamer, actualPosition, clickedPosition);
+		} else if (("jatekos".equals(actValue) || "gamer".equals(actValue)) && clickedPositionValue == "jatekos" || clickedPositionValue == "gamer"){ // ha ki akarok lépni üres területbe
+			System.out.println("Nyert");
+			
 		} 
 		}
 	}
